@@ -43,16 +43,18 @@ class _ConvertWIdgetState extends State<ConvertWIdget> {
         .rate;
 
     if (widget.isUzbekistan.value) {
-      result = (current / (double.tryParse(a!) as double)).toStringAsFixed(3);
+      result =
+          (current / (double.tryParse(a!) as double)).toStringAsPrecision(9);
 
       widget.textEditingController2?.text = result;
-      setState(() {});
     } else {
       result = ((double.tryParse(a!) as double) * (double.tryParse(v) ?? 0))
-          .toString();
-      print(result);
+          .toStringAsPrecision(9);
       widget.textEditingController2?.text = result;
-      setState(() {});
+    }
+
+    if (widget.textEditingController1?.text.isEmpty ?? false) {
+      widget.textEditingController2?.text = '0';
     }
     setState(() {});
   }
@@ -129,18 +131,26 @@ class _ConvertWIdgetState extends State<ConvertWIdget> {
                 },
                 keyboardType: TextInputType.number,
                 inputFormatters: [
-                  FilteringTextInputFormatter(RegExp(r'[0-9.?]'), allow: true)
+                  FilteringTextInputFormatter(RegExp(r'[0-9\.]'), allow: true)
                 ],
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  color: Color(0xFF26278D),
+                  fontWeight: FontWeight.bold,
+                ),
                 enabled: widget.enabled,
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                   filled: true,
                   hintText: widget.enabled ? '0' : result,
-                  fillColor: const Color(0xFFEFEFEF),
-                  border: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 0, color: Colors.transparent),
+                  fillColor: const Color(0xFFD0C7C7),
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                  ),
+                  disabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide.none,
                   ),
                 ),
               ),
