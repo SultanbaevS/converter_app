@@ -3,6 +3,7 @@ import 'package:converter_app/src/features/converter/data/currency_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 import 'custom_text.dart';
 
@@ -34,25 +35,28 @@ class ConvertWIdget extends StatefulWidget {
 class _ConvertWIdgetState extends State<ConvertWIdget> {
   String result = '0';
 
+  NumberFormat formatter = NumberFormat.decimalPatternDigits(
+    locale: 'en_us',
+    decimalDigits: 0,
+  );
+
   void exchange(String v) {
     final current = double.tryParse(v) ?? 0;
-
     final a = widget.allCurrencies
         .where((e) => e.ccy == widget.currentCity.value)
         .first
         .rate;
 
     if (widget.isUzbekistan.value) {
-      result =
-          (current / (double.tryParse(a!) as double)).toStringAsPrecision(9);
-
-      widget.textEditingController2?.text = result;
+      result = formatter.format(current / (double.tryParse(a!) as double));
+      widget.textEditingController2?.text = result.toString();
     } else {
-      result = ((double.tryParse(a!) as double) * (double.tryParse(v) ?? 0))
-          .toStringAsPrecision(9);
+      result = formatter.format(
+        (double.tryParse(a!) as double) * (double.tryParse(v) ?? 0),
+      );
+
       widget.textEditingController2?.text = result;
     }
-
     if (widget.textEditingController1?.text.isEmpty ?? false) {
       widget.textEditingController2?.text = '0';
     }
@@ -71,7 +75,7 @@ class _ConvertWIdgetState extends State<ConvertWIdget> {
             Row(
               children: [
                 CircleAvatar(
-                  backgroundColor: const Color(0xFF26278D),
+                  backgroundColor: const Color(0xFFA1A1A1),
                   radius: 25,
                   child: CircleFlag(
                     value
@@ -94,13 +98,14 @@ class _ConvertWIdgetState extends State<ConvertWIdget> {
                         focusColor: Colors.transparent,
                         menuMaxHeight: 250,
                         borderRadius:
-                            const BorderRadius.all(Radius.circular(15)),
+                            const BorderRadius.all(Radius.circular(10)),
                         iconEnabledColor: const Color(0xFF26278D),
                         elevation: 4,
                         items: List.generate(
                           widget.allCurrencies.length,
                           (index) => DropdownMenuItem(
                             value: widget.allCurrencies[index].ccy,
+                            alignment: Alignment.center,
                             child: CustomText(
                               text: widget.allCurrencies[index].ccy ?? '',
                               color: const Color(0xFF26278D),
@@ -122,7 +127,7 @@ class _ConvertWIdgetState extends State<ConvertWIdget> {
             SizedBox(
               width: 130.w,
               height: 40.h,
-              child: TextField(
+              child: TextFormField(
                 controller: widget.enabled
                     ? widget.textEditingController1
                     : widget.textEditingController2,
@@ -133,7 +138,7 @@ class _ConvertWIdgetState extends State<ConvertWIdget> {
                 keyboardType: TextInputType.number,
                 inputFormatters: [
                   FilteringTextInputFormatter(RegExp(r"^\d+\.?\d*"),
-                      allow: true)
+                      allow: true),
                 ],
                 style: const TextStyle(
                   color: Color(0xFF26278D),

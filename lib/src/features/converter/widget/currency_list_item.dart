@@ -41,7 +41,7 @@ class _CurrencyListItemState extends State<CurrencyListItem> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
-                backgroundColor: const Color(0xFF26278D),
+                backgroundColor: const Color(0xFFA1A1A1),
                 radius: 25,
                 child: CircleFlag((widget.symbolCode == 'EUR')
                     ? 'european_union'

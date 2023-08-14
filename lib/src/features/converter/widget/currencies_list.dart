@@ -53,8 +53,8 @@ class _CurrenciesListState extends State<CurrenciesList> {
       width: 328.w,
       height: 250.h,
       child: Card(
-        color: Colors.white,
         elevation: 4,
+        color: Colors.white,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -66,6 +66,8 @@ class _CurrenciesListState extends State<CurrenciesList> {
                     child: CircularProgressIndicator(color: Color(0xFF26278D)),
                   )
                 : RefreshIndicator(
+                    color: const Color(0xFF26278D),
+                    displacement: 8,
                     onRefresh: widget.onRefresh,
                     child: Padding(
                       padding: EdgeInsets.symmetric(

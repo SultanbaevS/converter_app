@@ -56,7 +56,7 @@ class _ConverterCardState extends State<ConverterCard> {
         elevation: 4,
         color: Colors.white,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
           child: ValueListenableBuilder(
             valueListenable: widget.isUzbekistan,
             builder: (context, value, child) {
