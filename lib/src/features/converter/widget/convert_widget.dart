@@ -37,7 +37,7 @@ class _ConvertWIdgetState extends State<ConvertWIdget> {
 
   NumberFormat formatter = NumberFormat.decimalPatternDigits(
     locale: 'en_us',
-    decimalDigits: 0,
+    decimalDigits: 2,
   );
 
   void exchange(String v) {
