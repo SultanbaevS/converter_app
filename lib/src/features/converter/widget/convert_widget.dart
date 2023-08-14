@@ -129,9 +129,11 @@ class _ConvertWIdgetState extends State<ConvertWIdget> {
                 onChanged: (value) {
                   exchange(value);
                 },
+                textAlign: TextAlign.end,
                 keyboardType: TextInputType.number,
                 inputFormatters: [
-                  FilteringTextInputFormatter(RegExp(r'[0-9\.]'), allow: true)
+                  FilteringTextInputFormatter(RegExp(r"^\d+\.?\d*"),
+                      allow: true)
                 ],
                 style: const TextStyle(
                   color: Color(0xFF26278D),
@@ -142,7 +144,11 @@ class _ConvertWIdgetState extends State<ConvertWIdget> {
                   contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                   filled: true,
                   hintText: widget.enabled ? '0' : result,
-                  fillColor: const Color(0xFFD0C7C7),
+                  hintStyle: const TextStyle(
+                    color: Color(0xFF26278D),
+                    fontWeight: FontWeight.bold,
+                  ),
+                  fillColor: const Color(0xFFEDE8E8),
                   enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide.none,
                   ),

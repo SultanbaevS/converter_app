@@ -67,59 +67,57 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: DecoratedBox(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: [0.2, 1],
-                colors: [Color(0xFFEAEAFE), Color(0xFFFFFFFF)],
-              ),
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: DecoratedBox(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: [0.2, 1],
+              colors: [Color(0xFFEAEAFE), Color(0xFFFFFFFF)],
             ),
-            child: ListView(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h),
-                  child: Column(
-                    children: [
-                      const TopText(),
-                      20.verticalSpace,
-                      ConverterCard(
-                        allCurrencies: allCurrencies,
-                        currentCity: currentCity,
-                        isUzbekistan: isUzbekistan,
-                        getConvert: getConvert,
-                      ),
-                      15.verticalSpace,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CustomText(text: 'Ориентировочный обменный курс'),
-                          CustomText(
-                            text: result ?? '',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ],
-                      ),
-                      15.verticalSpace,
-                      CurrenciesList(
-                        allCurrencies: allCurrencies,
-                        latestAllCurrencies: latestAllCurrencies,
-                        isLoading: isLoading,
-                        onRefresh: () async {
-                          isLoading.value = !isLoading.value;
-                          getAllCurrencies();
-                        },
-                      ),
-                    ],
-                  ),
+          ),
+          child: ListView(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h),
+                child: Column(
+                  children: [
+                    const TopText(),
+                    20.verticalSpace,
+                    ConverterCard(
+                      allCurrencies: allCurrencies,
+                      currentCity: currentCity,
+                      isUzbekistan: isUzbekistan,
+                      getConvert: getConvert,
+                    ),
+                    15.verticalSpace,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        CustomText(text: 'Ориентировочный обменный курс'),
+                        CustomText(
+                          text: result ?? '',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ],
+                    ),
+                    15.verticalSpace,
+                    CurrenciesList(
+                      allCurrencies: allCurrencies,
+                      latestAllCurrencies: latestAllCurrencies,
+                      isLoading: isLoading,
+                      onRefresh: () async {
+                        isLoading.value = !isLoading.value;
+                        getAllCurrencies();
+                      },
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
