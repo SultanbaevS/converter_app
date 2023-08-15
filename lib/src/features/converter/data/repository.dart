@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import '../../../common/constants/api_constants.dart';
 import '../../../common/services/api_service.dart';
-import 'currency_model.dart';
+import '../model/currency_model.dart';
 
 abstract interface class ICurrencyRepository {
   const ICurrencyRepository();

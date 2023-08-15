@@ -1,5 +1,5 @@
 import 'package:circle_flags/circle_flags.dart';
-import 'package:converter_app/src/features/converter/data/currency_model.dart';
+import 'package:converter_app/src/features/converter/model/currency_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

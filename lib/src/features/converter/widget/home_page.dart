@@ -5,7 +5,7 @@ import 'converter_card.dart';
 import 'top_text_widget.dart';
 import 'currencies_list.dart';
 import 'custom_text.dart';
-import '../data/currency_model.dart';
+import '../model/currency_model.dart';
 import '../../../common/services/api_service.dart';
 import '../data/repository.dart';
 

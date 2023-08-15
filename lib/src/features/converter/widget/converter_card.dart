@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../data/currency_model.dart';
+import '../model/currency_model.dart';
 import 'convert_widget.dart';
 import 'custom_text.dart';
 import 'divider_and_change.dart';
